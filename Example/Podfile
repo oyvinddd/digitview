@@ -1,0 +1,6 @@
+use_frameworks!
+target 'DigitView_Tests' do
+  pod 'DigitView', :path => '../'
+  
+  
+end
