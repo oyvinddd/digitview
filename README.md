@@ -5,11 +5,9 @@
 [![License](https://img.shields.io/cocoapods/l/DigitView.svg?style=flat)](https://cocoapods.org/pods/DigitView)
 [![Platform](https://img.shields.io/cocoapods/p/DigitView.svg?style=flat)](https://cocoapods.org/pods/DigitView)
 
-## Example
+## Introduction
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
-## Requirements
+UIView subclass that wraps separate UITextFields to create a custom digit input view. The delegate method `didFinishInput(_ input: String)` should be added to the view controller containing the digit view. The method will get called when the user has inserted a digit into every input field in the digit view.
 
 ## Installation
 
@@ -22,7 +20,7 @@ pod 'DigitView'
 
 ## Author
 
-43780301, oyvind.hauge@evry.com
+43780301, oyvind.s.hauge@gmail.com
 
 ## License
 

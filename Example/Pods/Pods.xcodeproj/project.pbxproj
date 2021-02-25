@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		63DF00FFF54976A1EA0E623D7F5BAD15 /* DigitView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2CC8DB8122BAD3EA29F7DD92E1E5DA /* DigitView-dummy.m */; };
 		836A684557D2E03089C5B922D62CDE99 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		8C096A5125E7DED4004CAB47 /* DigitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C096A5025E7DED4004CAB47 /* DigitView.swift */; };
 		8CE665EE496F90E0CB77BBFAEC61A67B /* Pods-DigitView_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DCCAE0729F9C4625CF799D00E4F6AA4E /* Pods-DigitView_Tests-dummy.m */; };
-		9F3B8AFDD3A26DF09DF859551E498589 /* ReplaceMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776F70125426BBDDD8823A2354CF10EE /* ReplaceMe.swift */; };
 		B8C9B8E4FDAEE877691411B79DFD9A09 /* DigitView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AAA9C38CDB487AEB88957001CBF86FC /* DigitView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B917251206C9E9324EF1EA33C8166779 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
 		BB39F4D2FCEA89A911BAA00375195BD9 /* Pods-DigitView_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = AC23948780005C2854279EA1FB0F4200 /* Pods-DigitView_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -36,9 +36,9 @@
 		4AAA9C38CDB487AEB88957001CBF86FC /* DigitView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DigitView-umbrella.h"; sourceTree = "<group>"; };
 		58DAB5CF80FE1864B736ADAB54C5608E /* DigitView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DigitView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B2CC8DB8122BAD3EA29F7DD92E1E5DA /* DigitView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "DigitView-dummy.m"; sourceTree = "<group>"; };
-		776F70125426BBDDD8823A2354CF10EE /* ReplaceMe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ReplaceMe.swift; path = DigitView/Classes/ReplaceMe.swift; sourceTree = "<group>"; };
 		7799A068EBDD584EE2E567D527B2AF85 /* Pods-DigitView_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-DigitView_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		7BB5B32EE9A9BFB441AE2019C5E9B768 /* Pods-DigitView_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-DigitView_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		8C096A5025E7DED4004CAB47 /* DigitView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DigitView.swift; sourceTree = "<group>"; };
 		8D698B3CEA66D8541F34C93C439A2903 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		AC23948780005C2854279EA1FB0F4200 /* Pods-DigitView_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-DigitView_Tests-umbrella.h"; sourceTree = "<group>"; };
@@ -84,7 +84,7 @@
 		38D7CB2DD14C3649C2CDCB32033089F2 /* DigitView */ = {
 			isa = PBXGroup;
 			children = (
-				776F70125426BBDDD8823A2354CF10EE /* ReplaceMe.swift */,
+				8C22B6B525E7DDFA007DC076 /* Source */,
 				F883B95039753D680C88FBB4BC9DE106 /* Pod */,
 				3F91AE29D28FA29D76D23452940F06C3 /* Support Files */,
 			);
@@ -122,6 +122,14 @@
 			);
 			name = "Support Files";
 			path = "Example/Pods/Target Support Files/DigitView";
+			sourceTree = "<group>";
+		};
+		8C22B6B525E7DDFA007DC076 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				8C096A5025E7DED4004CAB47 /* DigitView.swift */,
+			);
+			path = Source;
 			sourceTree = "<group>";
 		};
 		9600193D241D1EF2D1DEEEBA3DFB3643 /* Targets Support Files */ = {
@@ -245,6 +253,11 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
 				LastUpgradeCheck = 1100;
+				TargetAttributes = {
+					53ED7EB9B11450788FA29629D3C12213 = {
+						LastSwiftMigration = 1230;
+					};
+				};
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -287,8 +300,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C096A5125E7DED4004CAB47 /* DigitView.swift in Sources */,
 				63DF00FFF54976A1EA0E623D7F5BAD15 /* DigitView-dummy.m in Sources */,
-				9F3B8AFDD3A26DF09DF859551E498589 /* ReplaceMe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -506,6 +519,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E8F44C56012CDEF3D6B8AE6218021E87 /* DigitView.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -528,6 +542,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -539,6 +554,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FEC941736E62FEE2B1EEEA9CD543EFC2 /* DigitView.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";

@@ -21,21 +21,14 @@ Pod::Spec.new do |s|
 TODO: Add long description of the pod here.
                        DESC
 
-  s.homepage         = 'https://github.com/43780301/DigitView'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+  s.homepage         = 'https://github.com/oyvinddd/digitview'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { '43780301' => 'oyvind.hauge@evry.com' }
-  s.source           = { :git => 'https://github.com/43780301/DigitView.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.author           = { '43780301' => 'oyvind.s.hauge@gmail.com' }
+  s.source           = { :git => 'git@github.com:oyvinddd/digitview.git', :tag => s.version.to_s }
 
   s.ios.deployment_target = '9.0'
 
-  s.source_files = 'DigitView/Classes/**/*'
-  
-  # s.resource_bundles = {
-  #   'DigitView' => ['DigitView/Assets/*.png']
-  # }
-
+  s.source_files = 'DigitView/Source/**/*'
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
