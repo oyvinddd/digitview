@@ -534,7 +534,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.2;
 				MODULEMAP_FILE = "Target Support Files/DigitView/DigitView.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = org.cocoapods.digitview;
 				PRODUCT_MODULE_NAME = DigitView;
@@ -569,7 +569,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.2;
 				MODULEMAP_FILE = "Target Support Files/DigitView/DigitView.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = org.cocoapods.digitview;
 				PRODUCT_MODULE_NAME = DigitView;

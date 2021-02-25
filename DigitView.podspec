@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'DigitView'
-  s.version          = '1.0.0'
+  s.version          = '1.0.2'
   s.summary          = 'A simple UIView subclass that takes numbers as input in separate UITextFields.'
 
 # This description is used to generate tags and improve search results.
