@@ -18,18 +18,16 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+  UIView subclass that wraps separate UITextFields to create a custom digit input view. The delegate method didFinishInput(_ input: String) should be added to the view controller containing the digit view. The method will get called when the user has inserted a digit into every input field in the digit view.
                        DESC
 
   s.homepage         = 'https://github.com/oyvinddd/digitview'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { '43780301' => 'oyvind.s.hauge@gmail.com' }
+  s.author           = { 'Øyvind Hauge' => 'oyvind.s.hauge@gmail.com' }
   s.source           = { :git => 'git@github.com:oyvinddd/digitview.git', :tag => s.version.to_s }
+  
+  s.ios.deployment_target = '12.0'
 
-  s.ios.deployment_target = '9.0'
-
-  s.source_files = 'DigitView/Source/**/*'
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.source_files = 'DigitView/Source/**/*.swift'
+  s.swift_version = '5.0'
 end

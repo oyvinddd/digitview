@@ -18,10 +18,6 @@ it, simply add the following line to your Podfile:
 pod 'DigitView'
 ```
 
-## Author
-
-43780301, oyvind.s.hauge@gmail.com
-
 ## License
 
 DigitView is available under the MIT license. See the LICENSE file for more info.
