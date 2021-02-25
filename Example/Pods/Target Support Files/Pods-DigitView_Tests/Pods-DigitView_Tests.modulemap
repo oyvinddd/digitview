@@ -1,0 +1,6 @@
+framework module Pods_DigitView_Tests {
+  umbrella header "Pods-DigitView_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

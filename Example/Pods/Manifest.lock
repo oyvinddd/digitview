@@ -1,0 +1,16 @@
+PODS:
+  - DigitView (0.1.0)
+
+DEPENDENCIES:
+  - DigitView (from `../`)
+
+EXTERNAL SOURCES:
+  DigitView:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  DigitView: 97ceb0210db0b866e49f93a71fb0252abb23441b
+
+PODFILE CHECKSUM: ee180dbcc98c88b2cde641ffe07fe9bdd800e3dc
+
+COCOAPODS: 1.9.3

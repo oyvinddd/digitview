@@ -1,0 +1,6 @@
+framework module DigitView {
+  umbrella header "DigitView-umbrella.h"
+
+  export *
+  module * { export * }
+}
