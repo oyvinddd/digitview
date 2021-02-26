@@ -8,14 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'DigitView'
-  s.version          = '1.0.2'
+  s.version          = '1.0.3'
   s.summary          = 'A simple UIView subclass that takes numbers as input in separate UITextFields.'
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
   UIView subclass that wraps separate UITextFields to create a custom digit input view. The delegate method didFinishInput(_ input: String) should be added to the view controller containing the digit view. The method will get called when the user has inserted a digit into every input field in the digit view.

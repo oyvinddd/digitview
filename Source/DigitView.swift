@@ -21,38 +21,58 @@ public struct DigitViewConfig {
     
     private static let defaultFGColor = UIColor.black
     
+    private static let defaultBorderWidth: Float = 1
+    
+    /// Default config
+    public static let `default` = DigitViewConfig(
+        noOfDigits: defaultNoOfDigits,
+        bgColor: defaultBGColor,
+        textColor: defaultFGColor,
+        borderColor: defaultFGColor,
+        borderWidth: defaultBorderWidth
+    )
+    
     /// How many text fields to show in the digit view
-    var noOfDigits: Int
+    public var noOfDigits: Int
     
     /// The background color of the text fields
-    var fieldBackgroundColor: UIColor
+    public var fieldBackgroundColor: UIColor
     
     /// The text color of the text fields
-    var fieldForegroundColor: UIColor
+    public var fieldForegroundColor: UIColor
     
     /// The border color of the text fields (when selected)
-    var fieldBorderColor: UIColor
+    public var fieldBorderColor: UIColor
+    
+    /// The border width of the text fields
+    public var fieldBorderWidth: Float
     
     /// The corner radius of the text fields
-    var fieldCornerRadius: Float = 4
+    public var fieldCornerRadius: Float = 4
     
     /// If the characters in the text fields should be hidden or nah
-    var isSecure: Bool = true
+    public var isSecure: Bool = true
+    
+    /// Determines if the selected input fields border should pulsate or not
+    public var shouldPulsate: Bool = true
     
     /// The font inf the text fields
-    var font: UIFont = UIFont.boldSystemFont(ofSize: 16)
+    public var font: UIFont = UIFont.boldSystemFont(ofSize: 16)
     
-    static let `default` = DigitViewConfig(
-        noOfDigits: defaultNoOfDigits,
-        fieldBackgroundColor: defaultBGColor,
-        fieldForegroundColor: defaultFGColor,
-        fieldBorderColor: defaultFGColor
-    )
+
+    public init(noOfDigits: Int, bgColor: UIColor, textColor: UIColor,
+                borderColor: UIColor, borderWidth: Float) {
+        self.noOfDigits = noOfDigits
+        self.fieldBackgroundColor = bgColor
+        self.fieldForegroundColor = textColor
+        self.fieldBorderColor = borderColor
+        self.fieldBorderWidth = borderWidth
+    }
 }
 
 // MARK: - Digit View
 
-public final class DigitView: UIView {
+public final class DigitView: UIView, DeleteTextDelegate {
     
     public weak var delegate: DigitViewDelegate?
     public var text: String {
@@ -71,7 +91,7 @@ public final class DigitView: UIView {
         return stackView
     }()
     
-    init(with config: DigitViewConfig = DigitViewConfig.default, delegate: DigitViewDelegate? = nil) {
+    public init(with config: DigitViewConfig = DigitViewConfig.default, delegate: DigitViewDelegate? = nil) {
         self.config = config
         self.delegate = delegate
         super.init(frame: .zero)
@@ -97,8 +117,10 @@ public final class DigitView: UIView {
             let field = InputField(
                 number: number,
                 backgroundColor: config.fieldBackgroundColor,
+                textColor: config.fieldForegroundColor,
                 selectedBorderColor: config.fieldBorderColor,
                 deselectedBorderColor: config.fieldBackgroundColor,
+                borderWidth: config.fieldBorderWidth,
                 cornerRadius: config.fieldCornerRadius,
                 isSecure: config.isSecure,
                 font: config.font,
@@ -116,9 +138,8 @@ public final class DigitView: UIView {
             stackView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
-}
-
-extension DigitView: DeleteTextDelegate {
+    
+    // MARK: - Delete Text Delegate Conformance
     
     fileprivate func didDeleteText(_ inputField: InputField) {
         let prevIndex = inputField.tag - 1
@@ -142,7 +163,6 @@ extension DigitView: UITextFieldDelegate {
         if !string.isEmpty {
             _ = cycleInputFields(index: currIndex + 1)
         }
-        
         // call the public delegate method only when all input fields have been filled
         if allFieldsFilled() {
             delegate?.didFinishInput(text)
@@ -151,11 +171,11 @@ extension DigitView: UITextFieldDelegate {
     }
     
     public func textFieldDidBeginEditing(_ textField: UITextField) {
-        (textField as? InputField)?.toggleBorder(on: true)
+        (textField as? InputField)?.toggleBorder(on: true, animated: true)
     }
     
     public func textFieldDidEndEditing(_ textField: UITextField) {
-        (textField as? InputField)?.toggleBorder(on: false)
+        (textField as? InputField)?.toggleBorder(on: false, animated: true)
     }
     
     private func isValidInput(_ input: String?) -> Bool {
@@ -193,9 +213,9 @@ fileprivate final class InputField: UITextField {
     private let deselectedBorderColor: CGColor
     private let selectedBorderColor: CGColor
     
-    init(number: Int, backgroundColor: UIColor, selectedBorderColor: UIColor, deselectedBorderColor: UIColor,
-         cornerRadius: Float = 0, isSecure: Bool = true, font: UIFont? = nil,
-         delegate: UITextFieldDelegate?, deleteDelegate: DeleteTextDelegate?) {
+    init(number: Int, backgroundColor: UIColor, textColor: UIColor, selectedBorderColor: UIColor,
+         deselectedBorderColor: UIColor, borderWidth: Float, cornerRadius: Float = 0,
+         isSecure: Bool = true, font: UIFont? = nil, delegate: UITextFieldDelegate?, deleteDelegate: DeleteTextDelegate?) {
         self.deselectedBorderColor = deselectedBorderColor.cgColor
         self.selectedBorderColor = selectedBorderColor.cgColor
         self.deleteTextDelegate = deleteDelegate
@@ -204,6 +224,7 @@ fileprivate final class InputField: UITextField {
         self.tag = number
         translatesAutoresizingMaskIntoConstraints = false
         self.backgroundColor = backgroundColor
+        self.textColor = textColor
         self.font = font
         isSecureTextEntry = isSecure
         textAlignment = .center
@@ -211,7 +232,7 @@ fileprivate final class InputField: UITextField {
         keyboardType = .numberPad
         layer.cornerRadius = CGFloat(cornerRadius)
         layer.borderColor = deselectedBorderColor.cgColor
-        layer.borderWidth = 1
+        layer.borderWidth = CGFloat(borderWidth)
         layer.masksToBounds = true
     }
     
@@ -229,7 +250,14 @@ fileprivate final class InputField: UITextField {
         super.deleteBackward()
     }
     
-    func toggleBorder(on: Bool, animated: Bool = false) {
-        layer.borderColor = on ? selectedBorderColor : deselectedBorderColor
+    func toggleBorder(on: Bool, animated: Bool = true) {
+        let newBorderColor = on ? self.selectedBorderColor : self.deselectedBorderColor
+        guard animated else {
+            layer.borderColor = newBorderColor
+            return
+        }
+        UIView.transition(with: self, duration: 0.2, options: .transitionCrossDissolve) {
+            self.layer.borderColor = newBorderColor
+        }
     }
 }
