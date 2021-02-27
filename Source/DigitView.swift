@@ -29,6 +29,7 @@ public struct DigitViewConfig {
         bgColor: defaultBGColor,
         textColor: defaultFGColor,
         borderColor: defaultFGColor,
+        inactiveBorderColor: defaultBGColor,
         borderWidth: defaultBorderWidth
     )
     
@@ -43,6 +44,9 @@ public struct DigitViewConfig {
     
     /// The border color of the text fields (when selected)
     public var fieldBorderColor: UIColor
+    
+    /// The border color of the text fields when inactive
+    public var fieldBorderColorInactive: UIColor
     
     /// The border width of the text fields
     public var fieldBorderWidth: Float
@@ -61,11 +65,12 @@ public struct DigitViewConfig {
     
 
     public init(noOfDigits: Int, bgColor: UIColor, textColor: UIColor,
-                borderColor: UIColor, borderWidth: Float) {
+                borderColor: UIColor, inactiveBorderColor: UIColor, borderWidth: Float) {
         self.noOfDigits = noOfDigits
         self.fieldBackgroundColor = bgColor
         self.fieldForegroundColor = textColor
         self.fieldBorderColor = borderColor
+        self.fieldBorderColorInactive = inactiveBorderColor
         self.fieldBorderWidth = borderWidth
     }
 }
@@ -119,7 +124,7 @@ public final class DigitView: UIView, DeleteTextDelegate {
                 backgroundColor: config.fieldBackgroundColor,
                 textColor: config.fieldForegroundColor,
                 selectedBorderColor: config.fieldBorderColor,
-                deselectedBorderColor: config.fieldBackgroundColor,
+                deselectedBorderColor: config.fieldBorderColorInactive,
                 borderWidth: config.fieldBorderWidth,
                 cornerRadius: config.fieldCornerRadius,
                 isSecure: config.isSecure,
@@ -256,7 +261,7 @@ fileprivate final class InputField: UITextField {
             layer.borderColor = newBorderColor
             return
         }
-        UIView.transition(with: self, duration: 0.2, options: .transitionCrossDissolve) {
+        UIView.transition(with: self, duration: 0.15, options: .transitionCrossDissolve) {
             self.layer.borderColor = newBorderColor
         }
     }

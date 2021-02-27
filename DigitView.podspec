@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'DigitView'
-  s.version          = '1.0.3'
+  s.version          = '1.0.4'
   s.summary          = 'A simple UIView subclass that takes numbers as input in separate UITextFields.'
 
   s.description      = <<-DESC
